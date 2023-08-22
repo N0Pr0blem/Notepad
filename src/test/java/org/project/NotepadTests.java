@@ -17,8 +17,9 @@ public class NotepadTests {
     @Test
     public void addRecordTest_addOneRecord() {
         Record testRecord = testNotepad.addRecord("TestRecord", "");
+        Record notepadRecord = testNotepad.getRecordById(testRecord.getId());
 
-        Assert.assertTrue(testNotepad.idIsExist(testRecord.getId()));
+        Assert.assertTrue((notepadRecord.getName()==testRecord.getName())&&(notepadRecord.getSummary()==testRecord.getSummary()));
     }
 
     @Test
