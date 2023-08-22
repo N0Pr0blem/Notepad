@@ -13,7 +13,7 @@ public class NotepadTests {
     }
 
     @Test
-    public void addRecordTest_addOneRecord() {
+    public void addRecordTestAddOneRecord() {
         Record testRecord = testNotepad.addRecord("TestRecord", "");
 
         Assert.assertTrue(testNotepad.idIsExist(testRecord.getId()));
@@ -34,7 +34,7 @@ public class NotepadTests {
     }
 
     @Test
-    public void deleteRecordTest_deleteOneFromOne() {
+    public void deleteRecordTestDeleteOneFromOne() {
         Record record = testNotepad.addRecord("TestRecord", "");
 
         testNotepad.deleteRecordById(record.getId());
@@ -43,7 +43,7 @@ public class NotepadTests {
     }
 
     @Test
-    public void deleteRecordTest_deleteOneFromTen() {
+    public void deleteRecordTestDeleteOneFromTen() {
         Record record = testNotepad.addRecord("TestRecord", "TestRecord");
         for (int i = 0; i < 9; i++) {
             testNotepad.addRecord("TestRecord-" + i, "");
@@ -60,7 +60,7 @@ public class NotepadTests {
         String summary = "old summary";
         Record record = testNotepad.addRecord("TestRecord", summary);
         summary = "new summary";
-        record.setSummary(summary);
+        testNotepad.editRecord(record.getId(),summary);
         Assert.assertEquals(summary, record.getSummary());
     }
 

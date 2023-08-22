@@ -36,7 +36,7 @@ public class Notepad {
 
     public boolean idIsExist(UUID id) {
         for (Record record : allRecords) {
-            if (record.getId() == id) return true;
+            if (record.getId().equals(id)) return true;
         }
 
         return false;
