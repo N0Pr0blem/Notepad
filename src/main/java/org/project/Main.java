@@ -29,7 +29,7 @@ public class Main {
                 case 3 -> {
                     showAllRecords(notepad.getAllRecords());
                     System.out.println("Enter new summary: ");
-                    notepad.editRecord(getChooseRecordIndex(notepad), reader.nextLine());
+                    notepad.editRecord(notepad.getRecordByIndex(getChooseRecordIndex(notepad)).getId(), reader.nextLine());
                 }
                 case 4 -> showAllRecords(notepad.getAllRecords());
                 case 5 -> {
@@ -45,7 +45,7 @@ public class Main {
 
     private static void showAllRecords(ArrayList<Record> allRecords) {
         for (int i = 0; i < allRecords.size(); i++)
-            System.out.println(i + ". " + allRecords.get(i));
+            System.out.println(i + ". " + allRecords.get(i).getName());
     }
 
     private static int getCommand() {
@@ -72,7 +72,6 @@ public class Main {
 
 
     private static void showAllCommand() {
-        System.out.println("1. - Create record;\n2. - Read record;\n3. - Edit record;\n4. - Show all records;" +
-                "\n5. - Delete record;\n6. - Delete all records;" + "\n0. - Exit.");
+        System.out.println("1. - Create record;\n2. - Read record;\n3. - Edit record;\n4. - Show all records;" + "\n5. - Delete record;\n6. - Delete all records;" + "\n0. - Exit.");
     }
 }
