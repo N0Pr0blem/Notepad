@@ -19,7 +19,7 @@ public class NotepadTests {
         Record testRecord = testNotepad.addRecord("TestRecord", "");
         Record notepadRecord = testNotepad.getRecordById(testRecord.getId());
 
-        Assert.assertTrue((notepadRecord.getName()==testRecord.getName())&&(notepadRecord.getSummary()==testRecord.getSummary()));
+        Assert.assertTrue(testRecord.equals(notepadRecord));
     }
 
     @Test
@@ -28,7 +28,7 @@ public class NotepadTests {
         boolean result = false;
 
         for (int i = 0; i < 10; i++) {
-            testRecord = testNotepad.addRecord("TestRecord-" + i, "");
+            testRecord = testNotepad.addRecord("TestRecord-" + i, "text - "+i);
             result = result || getCountOfRepeat(testRecord.getId()) != 1;
         }
 

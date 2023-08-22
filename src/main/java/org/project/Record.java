@@ -1,5 +1,6 @@
 package org.project;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public class Record {
@@ -29,4 +30,13 @@ public class Record {
     public String getName() {
         return name;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Record record = (Record) o;
+        return Objects.equals(name, record.name) && Objects.equals(summary, record.summary) && Objects.equals(id, record.id);
+    }
+
 }
