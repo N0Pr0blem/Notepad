@@ -36,7 +36,7 @@ public class Notepad {
 
     public boolean idIsExist(UUID id) {
         for (Record record : allRecords) {
-            if (record.getId() == id) return true;
+            if (record.getId().equals(id)) return true;
         }
 
         return false;
@@ -50,8 +50,8 @@ public class Notepad {
         return index >= 0 && index < allRecords.size();
     }
 
-    public Record editRecord(int index, String summary) {
-        allRecords.get(index).setSummary(summary);
-        return allRecords.get(index);
+    public void editRecord(UUID id, String summary) {
+        Record result = getRecordById(id);
+        result.setSummary(summary);
     }
 }
