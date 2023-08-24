@@ -1,40 +1,41 @@
 package org.project;
 
 import org.apache.log4j.Logger;
+import org.apache.log4j.LogManager;
 
 import java.util.ArrayList;
 import java.util.UUID;
 
 public class Notepad {
     private final ArrayList<Record> allRecords = new ArrayList<>();
-    private final Logger log = Logger.getLogger(Notepad.class);
+    private final Logger log = LogManager.getLogger(Notepad.class);
 
 
     public Record addRecord(String name, String summary) {
         Record record = new Record(name, summary);
         allRecords.add(record);
-        log.info("Record "+record.getName()+" added to notepad");
+        log.info(String.format("Record '%s' (id: %s) added to notepad", record.getName(),record.getId().toString()));
         return record;
     }
 
     public ArrayList<Record> getAllRecords() {
-        log.info("All records have been received");
         return allRecords;
     }
 
     public void deleteRecordById(UUID id) {
-        log.info("Record has been deleted");
-        allRecords.remove(getRecordById(id));
+        Record record = getRecordById(id);
+        allRecords.remove(record);
+        log.info(String.format("Record %s (id: %s) has been deleted",record.getName(), id.toString()));
     }
 
     public Record getRecordById(UUID id) {
         for (Record record : allRecords) {
             if (record.getId() == id) {
-                log.info("Record was found by id");
+                log.info(String.format("Record was found by id - %s",id.toString()));
                 return record;
             }
         }
-        log.error("Record was NOT found by id");
+        log.error(String.format("Record was NOT found by id - %s",id.toString()));
         return new Record("Empty", "");
     }
 
@@ -52,7 +53,7 @@ public class Notepad {
     }
 
     public Record getRecordByIndex(int index) {
-        log.info("Record was found by index");
+        log.info(String.format("Record was found by index - %s",index));
         return allRecords.get(index);
     }
 
@@ -63,6 +64,6 @@ public class Notepad {
     public void editRecord(UUID id, String summary) {
         Record result = getRecordById(id);
         result.setSummary(summary);
-        log.info("Record changed successfully");
+        log.info(String.format("Record's '%s' summary was changed to:\n'%s'\nsuccessfully",result.getName(),result.getSummary()));
     }
 }

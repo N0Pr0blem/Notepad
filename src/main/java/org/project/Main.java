@@ -28,9 +28,9 @@ public class Main {
                 }
                 case 3 -> {
                     showAllRecords(notepad.getAllRecords());
-                    System.out.println("Enter new summary: ");
                     int recordIndex = getChooseRecordIndex(notepad);
                     Record chooseRecord = notepad.getRecordByIndex(recordIndex);
+                    System.out.println("Enter new summary: ");
                     notepad.editRecord(chooseRecord.getId(), reader.nextLine());
                 }
                 case 4 -> showAllRecords(notepad.getAllRecords());
