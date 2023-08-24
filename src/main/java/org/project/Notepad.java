@@ -14,7 +14,7 @@ public class Notepad {
     public Record addRecord(String name, String summary) {
         Record record = new Record(name, summary);
         allRecords.add(record);
-        log.info(String.format("Record '%s' (id: %s) added to notepad", record.getName(),record.getId().toString()));
+        log.info(String.format("Record '%s' (id: %s) added to notepad", record.getName(), record.getId().toString()));
         return record;
     }
 
@@ -25,17 +25,17 @@ public class Notepad {
     public void deleteRecordById(UUID id) {
         Record record = getRecordById(id);
         allRecords.remove(record);
-        log.info(String.format("Record %s (id: %s) has been deleted",record.getName(), id.toString()));
+        log.info(String.format("Record %s (id: %s) has been deleted", record.getName(), id.toString()));
     }
 
     public Record getRecordById(UUID id) {
         for (Record record : allRecords) {
             if (record.getId() == id) {
-                log.info(String.format("Record was found by id - %s",id.toString()));
+                log.info(String.format("Record was found by id - %s", id.toString()));
                 return record;
             }
         }
-        log.error(String.format("Record was NOT found by id - %s",id.toString()));
+        log.error(String.format("Record was NOT found by id - %s", id.toString()));
         return new Record("Empty", "");
     }
 
@@ -53,7 +53,7 @@ public class Notepad {
     }
 
     public Record getRecordByIndex(int index) {
-        log.info(String.format("Record was found by index - %s",index));
+        log.info(String.format("Record was found by index - %s", index));
         return allRecords.get(index);
     }
 
@@ -64,6 +64,6 @@ public class Notepad {
     public void editRecord(UUID id, String summary) {
         Record result = getRecordById(id);
         result.setSummary(summary);
-        log.info(String.format("Record's '%s' summary was changed to:\n'%s'\nsuccessfully",result.getName(),result.getSummary()));
+        log.info(String.format("Record's '%s' summary was changed to:\n'%s'\nsuccessfully", result.getName(), result.getSummary()));
     }
 }
