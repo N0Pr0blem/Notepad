@@ -60,7 +60,7 @@ public class NotepadTests {
         String summary = "old summary";
         Record record = testNotepad.addRecord("TestRecord", summary);
         summary = "new summary";
-        testNotepad.editRecord(record.getId(),summary);
+        testNotepad.editRecord(record.getId(), summary);
         Assert.assertEquals(summary, record.getSummary());
     }
 
